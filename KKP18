@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farmasi Klinik Kesihatan Presint 18</title>
+
+  <style>
+    :root {
+      --green: #13795b;
+      --dark-green: #084c3a;
+      --mint: #e9f7f1;
+      --cream: #fffdf8;
+      --text: #24352f;
+      --muted: #6d7c76;
+      --orange: #e28b42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(8, 76, 58, 0.92), rgba(19, 121, 91, 0.8)),
+        url("https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=1800&q=85")
+        center / cover fixed no-repeat;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(100%, 1080px);
+      margin: auto;
+      overflow: hidden;
+      border-radius: 24px;
+      background: var(--cream);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 22px 32px;
+      background: var(--dark-green);
+      color: white;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .logo {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #ffffff;
+      color: var(--green);
+      font-size: 25px;
+      font-weight: 900;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .brand p {
+      margin: 4px 0 0;
+      color: #c9e9dd;
+      font-size: 13px;
+    }
+
+    .status {
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 999px;
+      color: #e4f8ef;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .status::before {
+      content: "●";
+      margin-right: 7px;
+      color: #67d39f;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .welcome {
+      padding: 48px 38px;
+      background: var(--mint);
+    }
+
+    .eyebrow {
+      margin: 0 0 15px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+    }
+
+    .welcome h2 {
+      margin: 0;
+      max-width: 380px;
+      color: var(--dark-green);
+      font-size: clamp(32px, 5vw, 55px);
+      line-height: 1.02;
+    }
+
+    .welcome h2 span {
+      color: var(--orange);
+    }
+
+    .welcome p {
+      max-width: 390px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .info-box {
+      margin-top: 30px;
+      padding: 18px;
+      border-radius: 14px;
+      background: white;
+      box-shadow: 0 8px 20px rgba(8, 76, 58, 0.08);
+    }
+
+    .info-box strong {
+      color: var(--dark-green);
+    }
+
+    .info-box p {
+      margin: 7px 0 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .form-area {
+      padding: 38px;
+      background: white;
+    }
+
+    .form-area h3 {
+      margin: 0 0 6px;
+      color: var(--dark-green);
+      font-size: 26px;
+    }
+
+    .form-intro {
+      margin: 0 0 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--dark-green);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    select,
+    input {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 13px;
+      border: 1px solid #cfe0d8;
+      border-radius: 10px;
+      background: #fbfefc;
+      color: var(--text);
+      font-size: 16px;
+      outline: none;
+    }
+
+    select:focus,
+    input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(19, 121, 91, 0.13);
+    }
+
+    button,
+    .live-link {
+      min-height: 48px;
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    button {
+      background: var(--green);
+      color: white;
+    }
+
+    .live-link {
+      display: block;
+      margin-top: 11px;
+      background: #f5ede4;
+      color: #9a5a22;
+    }
+
+    button:hover,
+    .live-link:hover {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .quote {
+      margin-top: 22px;
+      padding: 15px 17px;
+      border-left: 4px solid var(--orange);
+      border-radius: 10px;
+      background: #fff8ef;
+      color: #76502e;
+      font-size: 14px;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      padding: 18px 32px;
+      background: #f5faf7;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: var(--dark-green);
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding: 0;
+      }
+
+      .app {
+        min-height: 100vh;
+        border-radius: 0;
+      }
+
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 22px;
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+      }
+
+      .welcome,
+      .form-area {
+        padding: 30px 22px;
+      }
+
+      footer {
+        padding: 18px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo">✚</div>
+        <div>
+          <h1>Farmasi Klinik Kesihatan Presint 18</h1>
+          <p>Online prepacking request portal</p>
+        </div>
+      </div>
+
+      <div class="status">Pharmacy workflow</div>
+    </header>
+
+    <div class="content">
+      <section class="welcome">
+        <p class="eyebrow">PREPACKING SERVICE</p>
+
+        <h2>
+          Prepare with care.<br>
+          <span>Serve with confidence.</span>
+        </h2>
+
+        <p>
+          Submit your prepacking details clearly so the pharmacy team can
+          prepare medicines efficiently and accurately.
+        </p>
+
+        <div class="info-box">
+          <strong>Before submitting</strong>
+          <p>
+            Please check the medicine, destination, total packs, and your name
+            before sending the request.
+          </p>
+        </div>
+      </section>
+
+      <section class="form-area">
+        <h3>Prepacking details</h3>
+        <p class="form-intro">Complete the form below to submit a request.</p>
+
+        <form
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdyL2evG-UNXMAQ7RaipHhiEYpKKler5ojYd9bVA8HkKRbj1g/formResponse"
+          method="post"
+          target="_blank"
+        >
+          <div class="field">
+            <label for="drug">Drug name</label>
+            <select name="entry.2051236823" id="drug" required>
+              <option value="" disabled selected>Select a medicine</option>
+              <option>Amoxycillin 250mg</option>
+              <option>Bromhexine 8mg</option>
+              <option>Chlorpheniramine Maleate 4mg</option>
+              <option>Diclofenac Sodium 50mg</option>
+              <option>Ibuprofen 200mg</option>
+              <option>Loratadine 10mg</option>
+              <option>Magnesium Trisilicate 250mg</option>
+              <option>Obimin</option>
+              <option>Paracetamol 500mg</option>
+              <option>Zincofer</option>
+              <option>ORS</option>
+              <option>UTIX</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="location">Location</label>
+            <select name="entry.404581136" id="location" required>
+              <option value="" disabled selected>Select a location</option>
+              <option>Pharmacy Counter</option>
+              <option>KKOM/KKIA/MCH</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="packs">Total packs</label>
+            <select name="entry.1581721456" id="packs" required>
+              <option value="" disabled selected>Select total packs</option>
+              <option value="-50">50 packs</option>
+              <option value="-70">70 packs</option>
+              <option value="-100">100 packs</option>
+              <option value="-140">140 packs</option>
+              <option value="-150">150 packs</option>
+              <option value="-200">200 packs</option>
+              <option value="-250">250 packs</option>
+              <option value="-300">300 packs</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="name">Your name</label>
+            <input
+              id="name"
+              name="entry.2043754696"
+              type="text"
+              placeholder="Enter your name"
+              required
+            >
+          </div>
+
+          <button type="submit">Submit prepacking request</button>
+
+          <a
+            class="live-link"
+            href="https://docs.google.com/spreadsheets/d/1EuLub6COia83czugL0-EdS-m1idImQTkZSn4uAl9vA0/edit#gid=2009708786"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View live packing data
+          </a>
+        </form>
+
+        <div class="quote" id="quote"></div>
+      </section>
+    </div>
+
+    <footer>
+      <span><strong>Farmasi Klinik Kesihatan Presint 18</strong></span>
+      <span>Accurate records support better pharmacy care.</span>
+    </footer>
+  </div>
+
+  <script>
+    const quotes = [
+      "Careful preparation supports confident service.",
+      "Every correct entry helps the next person.",
+      "Good records make pharmacy work smoother.",
+      "Small details make a big difference in care.",
+      "Count carefully, work calmly.",
+      "A prepared pharmacy is ready to serve.",
+      "Accuracy is part of patient care.",
+      "Clear information helps the whole team.",
+      "Good habits create reliable service.",
+      "Every pack deserves careful handling."
+    ];
+
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    document.getElementById("quote").textContent = `"${randomQuote}"`;
+  </script>
+</body>
+</html>
