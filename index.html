@@ -198,37 +198,32 @@
       box-shadow: 0 0 0 3px rgba(13, 104, 79, .14);
     }
 
-    button,
-    .live-link {
+    button {
       width: 100%;
       min-height: 48px;
       border: 0;
       border-radius: 10px;
       padding: 13px 16px;
+      background: var(--green);
+      color: white;
       font-size: 15px;
       font-weight: bold;
       cursor: pointer;
-      text-align: center;
-      text-decoration: none;
       transition: .2s ease;
     }
 
-    button {
-      background: var(--green);
-      color: white;
-    }
-
-    .live-link {
-      display: block;
-      margin-top: 11px;
-      background: #f7eee4;
-      color: #965a25;
-    }
-
-    button:hover,
-    .live-link:hover {
+    button:hover {
       transform: translateY(-2px);
       filter: brightness(1.06);
+    }
+
+    .saved-message {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #e8f7ee;
+      color: #17633f;
+      font-size: 14px;
     }
 
     .quote {
@@ -295,115 +290,79 @@
     <header>
       <div class="brand">
         <div class="logo">✚</div>
+
         <div>
           <h1>Ubat-ubat Kuota/Terkawal</h1>
           <p>Farmasi Klinik Kesihatan Presint 18</p>
         </div>
       </div>
 
-      <div class="status">Pharmacy workflow</div>
+      <div class="status">Internal pharmacy use</div>
     </header>
 
     <div class="content">
       <section class="welcome">
-        <p class="eyebrow">UBAT-UBAT KUOTA / TERKAWAL</p>
+        <p class="eyebrow">MEDICINE CONTROL WORKFLOW</p>
 
         <h2>
-          Manage medicines.<br>
-          <span>Serve with confidence.</span>
+          Simple records.<br>
+          <span>Better control.</span>
         </h2>
 
         <p>
-          Submit and monitor quota or controlled medicine requests clearly and
-          efficiently for Farmasi Klinik Kesihatan Presint 18.
+          Record quota and controlled medicine pack requests in a simple,
+          organised way for the pharmacy team.
         </p>
 
         <div class="info-box">
-          <strong>Before submitting</strong>
+          <strong>Quick reminder</strong>
           <p>
-            Check the medicine name, location, quantity, and your name before
-            sending the request.
+            Enter the total number of packs and your name carefully before
+            saving the request.
           </p>
         </div>
       </section>
 
       <section class="form-area">
-        <h3>Medicine request details</h3>
+        <h3>Request details</h3>
         <p class="form-intro">
-          Complete the details below to submit a quota or controlled medicine
-          request.
+          Complete the details below. Your request will be saved on this device.
         </p>
 
-        <form
-          action="https://docs.google.com/forms/d/e/1FAIpQLSdyL2evG-UNXMAQ7RaipHhiEYpKKler5ojYd9bVA8HkKRbj1g/formResponse"
-          method="post"
-          target="_blank"
-        >
-          <div class="field">
-            <label for="drug">Drug name</label>
-            <select name="entry.2051236823" id="drug" required>
-              <option value="" disabled selected>Select a medicine</option>
-              <option>Amoxycillin 250mg</option>
-              <option>Bromhexine 8mg</option>
-              <option>Chlorpheniramine Maleate 4mg</option>
-              <option>Diclofenac Sodium 50mg</option>
-              <option>Ibuprofen 200mg</option>
-              <option>Loratadine 10mg</option>
-              <option>Magnesium Trisilicate 250mg</option>
-              <option>Obimin</option>
-              <option>Paracetamol 500mg</option>
-              <option>Zincofer</option>
-              <option>ORS</option>
-              <option>UTIX</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="location">Location</label>
-            <select name="entry.404581136" id="location" required>
-              <option value="" disabled selected>Select a location</option>
-              <option>Pharmacy Counter</option>
-              <option>KKOM/KKIA/MCH</option>
-              <option>Other</option>
-            </select>
-          </div>
-
+        <form id="medicineForm">
           <div class="field">
             <label for="packs">Total packs</label>
-            <select name="entry.1581721456" id="packs" required>
+
+            <select id="packs" required>
               <option value="" disabled selected>Select total packs</option>
-              <option value="-50">50 packs</option>
-              <option value="-70">70 packs</option>
-              <option value="-100">100 packs</option>
-              <option value="-140">140 packs</option>
-              <option value="-150">150 packs</option>
-              <option value="-200">200 packs</option>
-              <option value="-250">250 packs</option>
-              <option value="-300">300 packs</option>
+              <option>50 packs</option>
+              <option>70 packs</option>
+              <option>100 packs</option>
+              <option>140 packs</option>
+              <option>150 packs</option>
+              <option>200 packs</option>
+              <option>250 packs</option>
+              <option>300 packs</option>
             </select>
           </div>
 
           <div class="field">
             <label for="name">Your name</label>
+
             <input
               id="name"
-              name="entry.2043754696"
               type="text"
               placeholder="Enter your name"
+              autocomplete="name"
               required
             >
           </div>
 
-          <button type="submit">Submit medicine request</button>
+          <button type="submit">Save medicine request</button>
 
-          <a
-            class="live-link"
-            href="https://docs.google.com/spreadsheets/d/1EuLub6COia83czugL0-EdS-m1idImQTkZSn4uAl9vA0/edit#gid=2009708786"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View quota / controlled medicine records
-          </a>
+          <div class="saved-message" id="savedMessage" hidden>
+            Request saved successfully on this device.
+          </div>
         </form>
 
         <div class="quote" id="quote"></div>
@@ -451,7 +410,35 @@
     const randomQuote =
       quotes[Math.floor(Math.random() * quotes.length)];
 
-    document.getElementById("quote").textContent = `"${randomQuote}"`;
+    document.getElementById("quote").textContent =
+      `"${randomQuote}"`;
+
+    const form = document.getElementById("medicineForm");
+    const savedMessage = document.getElementById("savedMessage");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const request = {
+        packs: document.getElementById("packs").value,
+        name: document.getElementById("name").value,
+        createdAt: new Date().toLocaleString()
+      };
+
+      const savedRequests = JSON.parse(
+        localStorage.getItem("medicineRequests") || "[]"
+      );
+
+      savedRequests.push(request);
+
+      localStorage.setItem(
+        "medicineRequests",
+        JSON.stringify(savedRequests)
+      );
+
+      savedMessage.hidden = false;
+      form.reset();
+    });
   </script>
 </body>
 </html>
