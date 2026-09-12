@@ -7,13 +7,12 @@
 
   <style>
     :root {
-      --green: #13795b;
-      --dark-green: #084c3a;
+      --green: #0d684f;
+      --dark-green: #063d31;
       --mint: #e9f7f1;
-      --cream: #fffdf8;
+      --orange: #d9853d;
       --text: #24352f;
-      --muted: #6d7c76;
-      --orange: #e28b42;
+      --muted: #687b74;
     }
 
     * {
@@ -23,13 +22,15 @@
     body {
       margin: 0;
       min-height: 100vh;
+      padding: 24px;
       font-family: Arial, sans-serif;
       color: var(--text);
       background:
-        linear-gradient(135deg, rgba(8, 76, 58, 0.92), rgba(19, 121, 91, 0.8)),
-        url("https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=1800&q=85")
-        center / cover fixed no-repeat;
-      padding: 24px;
+        linear-gradient(
+          rgba(4, 52, 55, 0.78),
+          rgba(4, 52, 55, 0.88)
+        ),
+        url("pharmacy-wallpaper.jpg") center top / cover fixed no-repeat;
     }
 
     .app {
@@ -37,8 +38,8 @@
       margin: auto;
       overflow: hidden;
       border-radius: 24px;
-      background: var(--cream);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      background: #fffdf9;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
     }
 
     header {
@@ -47,8 +48,8 @@
       align-items: center;
       gap: 20px;
       padding: 22px 32px;
-      background: var(--dark-green);
       color: white;
+      background: var(--dark-green);
     }
 
     .brand {
@@ -63,10 +64,10 @@
       width: 48px;
       height: 48px;
       border-radius: 14px;
-      background: #ffffff;
+      background: white;
       color: var(--green);
-      font-size: 25px;
-      font-weight: 900;
+      font-size: 26px;
+      font-weight: bold;
     }
 
     .brand h1 {
@@ -75,16 +76,16 @@
     }
 
     .brand p {
-      margin: 4px 0 0;
-      color: #c9e9dd;
+      margin: 5px 0 0;
+      color: #cce9df;
       font-size: 13px;
     }
 
     .status {
       padding: 9px 13px;
-      border: 1px solid rgba(255,255,255,.3);
+      border: 1px solid rgba(255,255,255,.35);
       border-radius: 999px;
-      color: #e4f8ef;
+      color: #e2f7ef;
       font-size: 13px;
       white-space: nowrap;
     }
@@ -92,7 +93,7 @@
     .status::before {
       content: "●";
       margin-right: 7px;
-      color: #67d39f;
+      color: #68d59d;
     }
 
     .content {
@@ -109,15 +110,15 @@
       margin: 0 0 15px;
       color: var(--green);
       font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.4px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
     }
 
     .welcome h2 {
+      max-width: 390px;
       margin: 0;
-      max-width: 380px;
       color: var(--dark-green);
-      font-size: clamp(32px, 5vw, 55px);
+      font-size: clamp(34px, 5vw, 56px);
       line-height: 1.02;
     }
 
@@ -125,7 +126,7 @@
       color: var(--orange);
     }
 
-    .welcome p {
+    .welcome > p:not(.eyebrow) {
       max-width: 390px;
       margin: 22px 0 0;
       color: var(--muted);
@@ -147,6 +148,7 @@
 
     .info-box p {
       margin: 7px 0 0;
+      color: var(--muted);
       font-size: 14px;
       line-height: 1.5;
     }
@@ -159,7 +161,7 @@
     .form-area h3 {
       margin: 0 0 6px;
       color: var(--dark-green);
-      font-size: 26px;
+      font-size: 27px;
     }
 
     .form-intro {
@@ -177,7 +179,7 @@
       margin-bottom: 7px;
       color: var(--dark-green);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: bold;
     }
 
     select,
@@ -196,21 +198,22 @@
     select:focus,
     input:focus {
       border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(19, 121, 91, 0.13);
+      box-shadow: 0 0 0 3px rgba(13, 104, 79, 0.14);
     }
 
     button,
     .live-link {
-      min-height: 48px;
       width: 100%;
+      min-height: 48px;
       border: 0;
       border-radius: 10px;
       padding: 13px 16px;
       font-size: 15px;
-      font-weight: 800;
+      font-weight: bold;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
+      transition: 0.2s ease;
     }
 
     button {
@@ -221,14 +224,14 @@
     .live-link {
       display: block;
       margin-top: 11px;
-      background: #f5ede4;
-      color: #9a5a22;
+      background: #f7eee4;
+      color: #965a25;
     }
 
     button:hover,
     .live-link:hover {
+      transform: translateY(-2px);
       filter: brightness(1.06);
-      transform: translateY(-1px);
     }
 
     .quote {
@@ -249,7 +252,7 @@
       gap: 15px;
       flex-wrap: wrap;
       padding: 18px 32px;
-      background: #f5faf7;
+      background: #f4faf7;
       color: var(--muted);
       font-size: 12px;
     }
@@ -321,8 +324,8 @@
         <div class="info-box">
           <strong>Before submitting</strong>
           <p>
-            Please check the medicine, destination, total packs, and your name
-            before sending the request.
+            Check the medicine, destination, total packs, and your name before
+            sending the request.
           </p>
         </div>
       </section>
@@ -416,18 +419,108 @@
   <script>
     const quotes = [
       "Careful preparation supports confident service.",
-      "Every correct entry helps the next person.",
       "Good records make pharmacy work smoother.",
-      "Small details make a big difference in care.",
-      "Count carefully, work calmly.",
-      "A prepared pharmacy is ready to serve.",
       "Accuracy is part of patient care.",
       "Clear information helps the whole team.",
+      "Count carefully, work calmly.",
+      "Every pack deserves careful handling.",
+      "A prepared pharmacy is ready to serve.",
+      "Small details make a big difference.",
       "Good habits create reliable service.",
-      "Every pack deserves careful handling."
+      "Keep the process simple and accurate.",
+      "Every entry helps the next person.",
+      "A clear record supports better decisions.",
+      "Good teamwork keeps care moving.",
+      "Preparation is part of professionalism.",
+      "Organised stock makes busy days easier.",
+      "Check the details, then carry on.",
+      "A calm check is always worthwhile.",
+      "Reliable records build confidence.",
+      "Every careful action matters.",
+      "Good service starts behind the counter.",
+      "Keep learning and keep checking.",
+      "Accuracy today saves time tomorrow.",
+      "A helpful record is a useful record.",
+      "Small improvements add up.",
+      "Clear labels support clear work.",
+      "Good pharmacy routines protect patients.",
+      "One careful check can prevent confusion.",
+      "A tidy shelf supports a tidy workflow.",
+      "Careful counting is a team effort.",
+      "Consistency makes work easier.",
+      "Good preparation supports good care.",
+      "Every medicine deserves respect.",
+      "Keep stock visible and ready.",
+      "A professional routine can stay simple.",
+      "Strong habits create smooth shifts.",
+      "Details matter when people depend on us.",
+      "Make every entry count.",
+      "Good communication saves time.",
+      "A ready pharmacy is a helpful pharmacy.",
+      "Work carefully, serve kindly.",
+      "Clear records reduce unnecessary searching.",
+      "One step at a time, one pack at a time.",
+      "The next shift will thank you.",
+      "Orderly shelves support orderly thinking.",
+      "Good systems support good people.",
+      "Every correct entry strengthens the process.",
+      "A quick check can make a big difference.",
+      "Care in, care out.",
+      "Keep the routine friendly and focused.",
+      "Good work is often quiet but important.",
+      "Accuracy builds trust.",
+      "A well-prepared request is easier to process.",
+      "Careful work supports confident decisions.",
+      "Make the workflow easier for everyone.",
+      "A clear process leaves room for better care.",
+      "Good records keep the team connected.",
+      "Stay organised and stay ready.",
+      "Every pack has a place.",
+      "Strong routines make quality repeatable.",
+      "Good pharmacy work begins with good basics.",
+      "Keep the shelves ready for service.",
+      "A thoughtful check shows professionalism.",
+      "Good preparation is a form of respect.",
+      "Clear details create smoother teamwork.",
+      "The safest routine is a consistent routine.",
+      "Your careful work supports patient care.",
+      "A prepared team is a confident team.",
+      "Keep improving one small step at a time.",
+      "Every detail has a purpose.",
+      "Good stock habits support good service.",
+      "Simple tools can support important work.",
+      "Stay patient with the process.",
+      "A clear record helps the right action.",
+      "Good habits make busy days lighter.",
+      "The small things matter in healthcare.",
+      "Careful work is valuable work.",
+      "A smooth shift starts with preparation.",
+      "Accuracy is everyone's responsibility.",
+      "Keep the process clear and dependable.",
+      "Good records help medicines reach people.",
+      "A professional touch can be simple.",
+      "Take a moment to check the details.",
+      "Good teamwork begins with information.",
+      "Quiet consistency creates strong results.",
+      "Every careful action supports the next one.",
+      "Make tomorrow easier with good records today.",
+      "A reliable routine supports reliable care.",
+      "Keep learning, checking, and improving.",
+      "Good pharmacy practice grows from good habits.",
+      "When records are clear, teamwork is easier.",
+      "Every correct pack supports the wider service.",
+      "A prepared shelf is ready to serve.",
+      "Good work supports good care.",
+      "Stay focused, stay helpful.",
+      "Clear information makes better decisions.",
+      "A calm workflow helps everyone.",
+      "Thank you for keeping the pharmacy ready.",
+      "Together, we keep care moving."
     ];
 
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const randomQuote =
+      quotes[Math.floor(Math.random() * quotes.length)];
+
     document.getElementById("quote").textContent = `"${randomQuote}"`;
   </script>
 </body>
