@@ -179,7 +179,6 @@
       font-weight: bold;
     }
 
-    select,
     input {
       width: 100%;
       min-height: 46px;
@@ -192,7 +191,6 @@
       outline: none;
     }
 
-    select:focus,
     input:focus {
       border-color: var(--green);
       box-shadow: 0 0 0 3px rgba(13, 104, 79, .14);
@@ -310,58 +308,79 @@
         </h2>
 
         <p>
-          Record quota and controlled medicine pack requests in a simple,
+          Record quota and controlled medicine details in a simple and
           organised way for the pharmacy team.
         </p>
 
         <div class="info-box">
-          <strong>Quick reminder</strong>
+          <strong>Before saving</strong>
           <p>
-            Enter the total number of packs and your name carefully before
-            saving the request.
+            Check the filler, amount, patient's name, and last four IC digits
+            carefully before saving the record.
           </p>
         </div>
       </section>
 
       <section class="form-area">
-        <h3>Request details</h3>
+        <h3>Medicine record details</h3>
+
         <p class="form-intro">
-          Complete the details below. Your request will be saved on this device.
+          Complete the details below. Records are saved on this device only.
         </p>
 
         <form id="medicineForm">
           <div class="field">
-            <label for="packs">Total packs</label>
-
-            <select id="packs" required>
-              <option value="" disabled selected>Select total packs</option>
-              <option>50 packs</option>
-              <option>70 packs</option>
-              <option>100 packs</option>
-              <option>140 packs</option>
-              <option>150 packs</option>
-              <option>200 packs</option>
-              <option>250 packs</option>
-              <option>300 packs</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="name">Your name</label>
+            <label for="filler">Filler</label>
 
             <input
-              id="name"
+              id="filler"
               type="text"
-              placeholder="Enter your name"
-              autocomplete="name"
+              placeholder="Enter filler name"
               required
             >
           </div>
 
-          <button type="submit">Save medicine request</button>
+          <div class="field">
+            <label for="amount">Amount</label>
+
+            <input
+              id="amount"
+              type="number"
+              min="1"
+              placeholder="Enter amount"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="patientName">Patient's name</label>
+
+            <input
+              id="patientName"
+              type="text"
+              placeholder="Enter patient's name"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="icLast4">Last 4 digit IC</label>
+
+            <input
+              id="icLast4"
+              type="text"
+              inputmode="numeric"
+              maxlength="4"
+              pattern="[0-9]{4}"
+              placeholder="Example: 1234"
+              required
+            >
+          </div>
+
+          <button type="submit">Save medicine record</button>
 
           <div class="saved-message" id="savedMessage" hidden>
-            Request saved successfully on this device.
+            Medicine record saved successfully on this device.
           </div>
         </form>
 
@@ -419,21 +438,23 @@
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      const request = {
-        packs: document.getElementById("packs").value,
-        name: document.getElementById("name").value,
+      const record = {
+        filler: document.getElementById("filler").value.trim(),
+        amount: document.getElementById("amount").value,
+        patientName: document.getElementById("patientName").value.trim(),
+        icLast4: document.getElementById("icLast4").value.trim(),
         createdAt: new Date().toLocaleString()
       };
 
-      const savedRequests = JSON.parse(
-        localStorage.getItem("medicineRequests") || "[]"
+      const records = JSON.parse(
+        localStorage.getItem("medicineRecords") || "[]"
       );
 
-      savedRequests.push(request);
+      records.push(record);
 
       localStorage.setItem(
-        "medicineRequests",
-        JSON.stringify(savedRequests)
+        "medicineRecords",
+        JSON.stringify(records)
       );
 
       savedMessage.hidden = false;
